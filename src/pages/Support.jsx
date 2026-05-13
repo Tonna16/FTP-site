@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, Mail, MessageCircle, BookOpen, ChevronDown, Check, Loader2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+import emailjs from '@emailjs/browser';
 
 const AnimatedElement = ({ children, className, delay = 0 }) => {
   const ref = useRef(null);
@@ -52,17 +52,44 @@ export default function Support() {
   const [sending, setSending] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    setSending(true);
-    await base44.entities.ContactMessage.create({
-      name: form.name,
-      email: form.email,
+  e.preventDefault();
+
+  try {
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
       message: form.message,
+    };
+
+    // Email TO YOU
+    await emailjs.send(
+      'service_l39a0h7',
+      'template_l62z2k8',
+      templateParams,
+      'dpULN0h18x58vg7wT'
+    );
+
+    // Auto reply TO USER
+    await emailjs.send(
+      'service_l39a0h7',
+      'template_2xifxo9',
+      templateParams,
+      'dpULN0h18x58vg7wT'
+    );
+
+    alert('Support message sent successfully.');
+
+    setForm({
+      name: '',
+      email: '',
+      message: ''
     });
-    setSending(false);
-    setSubmitted(true);
-  };
+
+  } catch (error) {
+    console.error(error);
+    alert('Failed to send message.');
+  }
+};
 
   return (
     <div className="bg-background min-h-screen">

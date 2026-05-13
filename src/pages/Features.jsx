@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Zap, Heart, Radio, Trophy, BarChart2, Dna, Skull, Share2, ArrowRight, Atom, Star, Telescope, Waves } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 
 const iconMap = { Zap, Heart, Radio, Trophy, BarChart2, Dna, Skull, Share2, Star };
 
@@ -32,11 +31,16 @@ export default function Features() {
   const [features, setFeatures] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
 
-  useEffect(() => {
-    base44.entities.Feature.list("-updated_date", 20)
-      .then(setFeatures)
-      .catch(() => {});
-  }, []);
+  const features = [
+  {
+    title: "Universe Simulation",
+    description: "Simulate alternate universes with adjustable constants."
+  },
+  {
+    title: "Physics Sandbox",
+    description: "Experiment with gravity, light speed, and more."
+  }
+];
 
   const staticFallback = [
     { icon: "Zap", title: "Big Bang Intro", description: "Particle burst, shockwaves, and a dramatic launch sequence that immerses you from the first moment.", category: "experience" },

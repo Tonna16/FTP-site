@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Check, Zap, Heart, Radio, Trophy, BarChart2, Dna, Skull, Share2, ArrowRight, Star, ChevronRight, Atom, Sun, Globe, Activity, List } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 import { Link } from "react-router-dom";
 import SolarSystem from "@/components/SolarSystem";
 
@@ -458,13 +457,6 @@ function CTASection() {
 }
 
 export default function Home() {
-  const [features, setFeatures] = useState([]);
-
-  useEffect(() => {
-    base44.entities.Feature.list("-updated_date", 20)
-      .then(setFeatures)
-      .catch(() => {});
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 font-sans">
