@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+
 import { Shield, Lock, Eye, Trash2, Mail } from "lucide-react";
 
 const sections = [

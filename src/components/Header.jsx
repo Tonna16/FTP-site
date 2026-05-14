@@ -58,12 +58,16 @@ export default function Header() {
             >
               Support
             </Link>
-            <a
-              href="#"
-              className="px-5 py-2 rounded-full text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-background/40 transition-all duration-300"
-            >
-              Privacy
-            </a>
+            <Link
+  to="/Privacy"
+  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+    isActive("/Privacy")
+      ? "bg-background text-foreground shadow-md border border-border/50"
+      : "text-muted-foreground hover:text-foreground hover:bg-background/40"
+  }`}
+>
+  Privacy
+</Link>
           </nav>
         </div>
 
@@ -113,12 +117,16 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <a
-                  href="#"
-                  className="px-4 py-4 rounded-2xl text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-secondary/50 border border-transparent transition-all duration-200"
-                >
-                  Privacy
-                </a>
+                <Link
+  to="/Privacy"
+  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+    isActive("/Privacy")
+      ? "bg-background text-foreground shadow-md border border-border/50"
+      : "text-muted-foreground hover:text-foreground hover:bg-background/40"
+  }`}
+>
+  Privacy
+</Link>
               </nav>
               <div className="p-6 border-t border-border/40 bg-secondary/10">
                 <a

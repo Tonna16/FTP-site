@@ -26,7 +26,12 @@ export default function Footer() {
             <span className="text-border/80">·</span>
             <Link to="/Support" className="px-3 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200">Support</Link>
             <span className="text-border/80">·</span>
-            <a href="#" className="px-3 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200">Privacy Policy</a>
+           <Link
+  to="/Privacy"
+  className="px-3 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+>
+  Privacy Policy
+</Link>
           </nav>
 
           {/* CTA + copyright */}
