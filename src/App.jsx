@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import Features from "./pages/Features"
 import Support from "./pages/Support"
+import Privacy from './pages/Privacy';
+
 import Layout from "./components/Layout"
 
 function PageNotFound() {
@@ -35,6 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Features" element={<Features />} />
             <Route path="/Support" element={<Support />} />
+             <Route path="/Privacy" element={<Privacy />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
