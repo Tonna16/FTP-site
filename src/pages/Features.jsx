@@ -26,21 +26,19 @@ const AnimatedElement = ({ children, className, delay = 0 }) => {
     </div>
   );
 };
-
 export default function Features() {
-  const [features, setFeatures] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
 
-  const features = [
-  {
-    title: "Universe Simulation",
-    description: "Simulate alternate universes with adjustable constants."
-  },
-  {
-    title: "Physics Sandbox",
-    description: "Experiment with gravity, light speed, and more."
-  }
-];
+  const fallbackFeatures = [
+    {
+      title: "Universe Simulation",
+      description: "Simulate alternate universes with adjustable constants."
+    },
+    {
+      title: "Physics Sandbox",
+      description: "Experiment with gravity, light speed, and more."
+    }
+  ];
 
   const staticFallback = [
     { icon: "Zap", title: "Big Bang Intro", description: "Particle burst, shockwaves, and a dramatic launch sequence that immerses you from the first moment.", category: "experience" },
@@ -52,7 +50,8 @@ export default function Features() {
     { icon: "Skull", title: "Catastrophes", description: "Full-screen collapse, hypernova, and vacuum-decay scenarios.", category: "experience" },
     { icon: "Share2", title: "Share Links", description: "Save snapshots and send exact universe configurations to anyone.", category: "social" },
   ];
-  const allItems = features.length > 0 ? features : staticFallback;
+
+  const allItems = staticFallback;
   const tabs = ["all", "experience", "science", "gameplay", "social"];
   const filtered = activeTab === "all" ? allItems : allItems.filter(i => i.category === activeTab);
 

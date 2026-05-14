@@ -316,18 +316,19 @@ function WhyItsDifferentSection() {
   );
 }
 
-function CosmicLabSection({ features }) {
-  const staticFallback = [
-    { icon: "Zap", title: "Big Bang Intro", description: "Particle burst, shockwaves, and a dramatic launch sequence that immerses you.", category: "experience" },
-    { icon: "Heart", title: "Vitals Monitor", description: "Life, stars, atoms, and age tracked like a living patient in real time.", category: "experience" },
-    { icon: "Radio", title: "Event Feed", description: "Neutron stars, quark-gluon plasma, proton decay, and rare popups narrate.", category: "experience" },
-    { icon: "Trophy", title: "Challenges", description: "Tiered objectives reward precision and teach stability thresholds.", category: "gameplay" },
-    { icon: "BarChart2", title: "Graphs", description: "Relationship charts show how properties scale as constants move.", category: "science" },
-    { icon: "Dna", title: "Universe DNA", description: "A visual signature encodes how far your cosmos drifts from ours.", category: "science" },
-    { icon: "Skull", title: "Catastrophes", description: "Full-screen collapse, hypernova, and vacuum-decay scenarios.", category: "experience" },
-    { icon: "Share2", title: "Share Links", description: "Save snapshots and send exact universe configurations to anyone.", category: "social" },
-  ];
-  const items = features && features.length > 0 ? features : staticFallback;
+function CosmicLabSection() {
+const staticFallback = [
+  { icon: "Zap", title: "Big Bang Intro", description: "Particle burst, shockwaves, and a dramatic launch sequence that immerses you.", category: "experience" },
+  { icon: "Heart", title: "Vitals Monitor", description: "Life, stars, atoms, and age tracked like a living patient in real time.", category: "experience" },
+  { icon: "Radio", title: "Event Feed", description: "Neutron stars, quark-gluon plasma, proton decay, and rare popups narrate.", category: "experience" },
+  { icon: "Trophy", title: "Challenges", description: "Tiered objectives reward precision and teach stability thresholds.", category: "gameplay" },
+  { icon: "BarChart2", title: "Graphs", description: "Relationship charts show how properties scale as constants move.", category: "science" },
+  { icon: "Dna", title: "Universe DNA", description: "A visual signature encodes how far your cosmos drifts from ours.", category: "science" },
+  { icon: "Skull", title: "Catastrophes", description: "Full-screen collapse, hypernova, and vacuum-decay scenarios.", category: "experience" },
+  { icon: "Share2", title: "Share Links", description: "Save snapshots and send exact universe configurations to anyone.", category: "social" },
+];
+
+const items = staticFallback;
 
   return (
     <section className="relative py-32 bg-secondary/20 overflow-hidden border-y border-border/30">
@@ -464,7 +465,7 @@ export default function Home() {
       <HeroSection />
       <HowItWorksSection />
       <WhyItsDifferentSection />
-      <CosmicLabSection features={features} />
+      <CosmicLabSection />
       <CTASection />
     </div>
   );

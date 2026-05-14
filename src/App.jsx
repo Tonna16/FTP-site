@@ -1,59 +1,46 @@
 import { Toaster } from "@/components/ui/toaster"
-import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PageNotFound from './lib/PageNotFound';
-import { AuthProvider, useAuth } from '@/lib/AuthContext';
-import UserNotRegisteredError from '@/components/UserNotRegisteredError';
-import Home from './pages/Home';
-import Features from './pages/Features';
-import Support from './pages/Support';
-import Layout from './components/Layout';
-// Add page imports here
+import { QueryClientProvider } from "@tanstack/react-query"
+import { queryClientInstance } from "@/lib/query-client"
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
+import Home from "./pages/Home"
+import Features from "./pages/Features"
+import Support from "./pages/Support"
+import Layout from "./components/Layout"
 
-const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
-
-  if (isLoadingPublicSettings || isLoadingAuth) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-muted border-t-foreground rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  if (authError) {
-    if (authError.type === 'user_not_registered') {
-      return <UserNotRegisteredError />;
-    } else if (authError.type === 'auth_required') {
-      navigateToLogin();
-      return null;
-    }
-  }
-
+function PageNotFound() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/Features" element={<Features />} />
-        <Route path="/Support" element={<Support />} />
-        {/* Add your page Route elements here */}
-      </Route>
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-  );
-};
+    <div className="min-h-[70vh] flex items-center justify-center px-6">
+      <div className="text-center max-w-md">
+        <h1 className="text-4xl font-bold mb-4">Page not found</h1>
+        <p className="text-muted-foreground mb-6">
+          The page you're looking for does not exist.
+        </p>
+        <Link
+          to="/"
+          className="inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-primary-foreground font-medium"
+        >
+          Go home
+        </Link>
+      </div>
+    </div>
+  )
+}
 
 function App() {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClientInstance}>
-        <Router>
-          <AuthenticatedApp />
-        </Router>
-        <Toaster />
-      </QueryClientProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClientInstance}>
+      <Router>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/Features" element={<Features />} />
+            <Route path="/Support" element={<Support />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </Router>
+      <Toaster />
+    </QueryClientProvider>
   )
 }
 
